@@ -10,10 +10,8 @@ from eth_account._utils.legacy_transactions import (
     encode_transaction,
     serializable_unsigned_transaction_from_dict,
 )
-from eth_account._utils.typed_transactions import (
-    AccessListTransaction,
-    DynamicFeeTransaction,
-)
+from eth_account.typed_transactions import AccessListTransaction, DynamicFeeTransaction
+
 from eth_typing import HexStr
 from hexbytes import HexBytes
 from toolz import dissoc
