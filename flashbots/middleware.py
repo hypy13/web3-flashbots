@@ -31,7 +31,7 @@ def construct_flashbots_middleware(
     """
 
     def flashbots_middleware(
-        make_request: Callable[[RPCEndpoint, Any], Any], w3: Web3
+        make_request: Callable[[RPCEndpoint, Any], Any]
     ) -> Callable[[RPCEndpoint, Any], RPCResponse]:
         def middleware(method: RPCEndpoint, params: Any) -> RPCResponse:
             if method not in FLASHBOTS_METHODS:
