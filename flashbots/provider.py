@@ -6,8 +6,10 @@ from eth_account import Account, messages
 from eth_account.signers.local import LocalAccount
 from eth_typing import URI
 from web3 import HTTPProvider, Web3
-from web3._utils.request import make_post_request
+from web3._utils.http_session_manager import HTTPSessionManager
 from web3.types import RPCEndpoint, RPCResponse
+
+request = HTTPSessionManager()
 
 
 def get_default_endpoint() -> URI:
@@ -83,7 +85,7 @@ class FlashbotProvider(HTTPProvider):
         )
         request_data = self.encode_rpc_request(method, params)
 
-        raw_response = make_post_request(
+        raw_response = request.make_post_request(
             self.endpoint_uri,
             request_data,
             headers=self.get_request_headers()
